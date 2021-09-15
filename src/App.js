@@ -1,8 +1,10 @@
 import React, { Component} from 'react';
 import { Container } from "semantic-ui-react";
+import styled from "styled-components";
 import './App.css';
 import MusicForm from './MusicForm';
 import Musics from './Musics';
+import HeaderText from './HeaderText';
 class App extends Component {
   state = {
     musics: [
@@ -48,19 +50,33 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
-        <MusicForm addMusic={this.addMusic} />
-        
-        <Musics 
-        deleteMusic={this.deleteMusic}
-        updateMusic={this.updateMusic}
-        musics={this.state.musics} />
-        
-      </Container>
+      <AppContainer>
+        <Container>
+          <HeaderText size="large">APP Styled</HeaderText>
+          <MusicForm addMusic={this.addMusic} />
+          
+          <Musics 
+          deleteMusic={this.deleteMusic}
+          updateMusic={this.updateMusic}
+          musics={this.state.musics} />
+
+        </Container>
+      </AppContainer>
+      
     );
   };
 
 };
+
+const AppContainer = styled.div`
+  min-height: 100vh;
+  background: rgb(0,154,232);
+  background: linear-gradient(
+    90deg, 
+    rgba(0,154,232,1) 34%, 
+    rgba(0,212,255,1) 100%
+  );
+`;
 
 export default App;
 
